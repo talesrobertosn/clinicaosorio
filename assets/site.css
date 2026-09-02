@@ -235,64 +235,11 @@ strong{font-weight:700;color:var(--tinta)}
 .rodape li{margin-bottom:.6rem}
 .rodape__m{display:flex;align-items:center;gap:.8rem;margin-bottom:1.1rem}
 .rodape__m img{width:52px}
-.rodape__m b{font-family:Fraunces,Georgia,serif;font-size:1.32rem;color:#fff;font-weight:500}
+.rodape__m b{font-family:Manrope,sans-serif;font-size:1.2rem;color:#fff;font-weight:700;letter-spacing:-.022em}
 .rodape__reg{border-top:1px solid rgba(255,255,255,.15);margin-top:3rem;padding-top:1.6rem;font-size:.88rem;color:#8299B7}
 .rodape__reg b{color:#D5E1F0}
 
 /* ---------------- responsivo ---------------- */
-@media (max-width:1240px){
-  h1{font-size:2.9rem}
-  h2{font-size:2.05rem}
-  .hero__g{grid-template-columns:1fr;gap:3rem;padding-top:3.6rem}
-  .hero__foto{max-width:23rem;margin:0 auto}
-  .hero p{max-width:none}
-  .grade-3,.duvidas{grid-template-columns:1fr 1fr}
-  .medico{grid-template-columns:1fr;gap:2.2rem}
-  .medico .arco{max-width:20rem}
-  .faixa__g{grid-template-columns:1fr 1fr;gap:1.3rem}
-  .aval{grid-template-columns:1fr;text-align:left}
-  .rodape__g{grid-template-columns:1fr 1fr}
-}
-@media (max-width:1000px){
-  body{font-size:17.5px;padding-bottom:5rem}
-  h1{font-size:2.3rem}
-  h2{font-size:1.75rem}
-  .marca img{width:40px}
-  .marca b{font-size:1rem}
-  .topo__l{gap:.8rem;min-height:70px}
-  .hamb{padding:.5rem .9rem;font-size:.88rem}
-  .btn--g{padding:1.05rem 1.5rem;font-size:1.02rem}
-  .arco__q{inset:-10px -10px 16px 16px}
-  .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--linha);flex-direction:column;align-items:stretch;gap:0;padding:.6rem 1.6rem 1.4rem;box-shadow:var(--sombra)}
-  .nav[data-aberto="1"]{display:flex}
-  .nav a{padding:.85rem 0;border-bottom:1px solid var(--linha)}
-  .nav .btn{margin-top:.9rem;justify-content:center}
-  .hamb{display:inline-flex}
-  .topo>.topo__l>.btn{display:none}
-  .sec{padding:3.8rem 0}
-  .grade-2,.grade-3,.duvidas{grid-template-columns:1fr}
-  .cartao,.chamada,.aval{padding:1.8rem}
-  .flutua{display:none}
-  .barra{display:flex}
-  .crono li{flex-direction:column;gap:.2rem}
-  .crono time{width:auto}
-  .rodape__g{grid-template-columns:1fr;gap:2.2rem}
-  .fone-g{font-size:1.6rem}
-}
-
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-
-@media print{
-  .topo,.barra,.flutua,.hero__foto,.duvidas,.chamada,.rodape__g,.mapa{display:none!important}
-  body{font-size:11.5pt;padding:0;color:#000;background:#fff}
-  .hero,.chamada{background:none!important;color:#000}
-  .hero h1,.hero p{color:#000}
-  a{color:#000;text-decoration:none}
-  .sec{padding:1rem 0;page-break-inside:avoid}
-  .rodape{background:none;color:#000;padding-top:1rem}
-  .rodape__reg{color:#000;border-top:1px solid #999}
-}
-
 
 /* ---------- acréscimos v2.1 ---------- */
 
@@ -331,14 +278,6 @@ strong{font-weight:700;color:var(--tinta)}
 /* faixa de contato dupla */
 .duplo-cta{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center}
 
-@media (max-width:1240px){.numeros{grid-template-columns:1fr 1fr}}
-@media (max-width:1000px){
-  .numeros{grid-template-columns:1fr 1fr;padding:1.6rem}
-  .explica{padding:1.9rem}
-  .cartao .dica{opacity:1;max-height:4rem}
-}
-
-
 /* ---------- acréscimos v2.2 ---------- */
 
 /* frase de impacto, sem caixa */
@@ -357,12 +296,129 @@ strong{font-weight:700;color:var(--tinta)}
 /* terceiro cartão de serviço */
 .grade-servicos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
 
+/* ============ telas médias ============ */
 @media (max-width:1240px){
+  h1{font-size:2.9rem}
+  h2{font-size:2.05rem}
+  .hero__g{grid-template-columns:1fr;gap:3rem;padding-top:3.6rem}
+  .hero__foto{max-width:23rem;margin:0 auto}
+  .hero p{max-width:none}
+  .grade-3,.duvidas{grid-template-columns:1fr 1fr}
+  .medico{grid-template-columns:1fr;gap:2.2rem}
+  .medico .arco{max-width:20rem}
+  .faixa__g{grid-template-columns:1fr 1fr;gap:1.3rem}
+  .aval{grid-template-columns:1fr;text-align:left}
+  .rodape__g{grid-template-columns:1fr 1fr}
+.numeros{grid-template-columns:1fr 1fr}
   .claro{grid-template-columns:1fr;gap:1.8rem;padding:2rem}
   .grade-servicos{grid-template-columns:1fr}
   .manifesto p{font-size:1.72rem}
 }
+
+/* ============ celular ============ */
 @media (max-width:1000px){
+  body{font-size:16.6px;line-height:1.62;padding-bottom:3.9rem}
+  h1{font-size:2.05rem}
+  h2{font-size:1.55rem}
+  h3{font-size:1.16rem}
+  p,ul,ol{margin-bottom:1em}
+  .intro{font-size:1.03rem}
+  .env{padding:0 1.15rem}
+  .sec{padding:2.7rem 0}
+  .sec--fina{padding:1.9rem 0}
+  .marca img{width:38px}
+  .marca b{font-size:1rem}
+  .topo__l{gap:.8rem;min-height:64px;padding:.65rem 1.15rem}
+  .hamb{padding:.45rem .85rem;font-size:.86rem}
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--linha);flex-direction:column;align-items:stretch;gap:0;padding:.5rem 1.15rem 1.1rem;box-shadow:var(--sombra)}
+  .nav[data-aberto="1"]{display:flex}
+  .nav a{padding:.8rem 0;border-bottom:1px solid var(--linha)}
+  .nav .btn{margin-top:.8rem;justify-content:center}
+  .topo>.topo__l>.btn{display:none}
+
+  .hero__g{grid-template-columns:1fr;gap:1.9rem;padding:2.4rem 1.15rem 2.6rem}
+  .hero p{font-size:1.05rem}
+  .hero__foto{max-width:17rem;margin:0 auto}
+  .hero__acoes{margin-top:1.4rem;gap:.6rem}
+  .hero__acoes .btn{flex:1 1 auto}
+  .selo{font-size:.78rem;padding:.35rem .8rem;margin-bottom:1rem}
+  .hero__nota{margin-top:1.1rem;font-size:.88rem}
+  .arco__q{inset:-8px -8px 14px 14px}
+
+  .faixa__g{grid-template-columns:1fr 1fr;gap:1rem 1.2rem;padding:1.4rem 1.15rem}
+  .faixa b{font-size:1.28rem}
+  .faixa span{font-size:.85rem}
+
+  .manifesto p{font-size:1.42rem;line-height:1.35}
+  .manifesto .risco{margin-bottom:1.2rem}
+
+  .grade-2,.grade-3,.grade-servicos,.duvidas,.contato-grade{grid-template-columns:1fr;gap:1rem}
+  .cartao{padding:1.4rem;border-radius:18px}
+  .cartao .dica{opacity:1;max-height:6rem;font-size:.9rem}
+  .duvida{min-height:0;padding:1.4rem;border-radius:18px}
+  .duvida b{font-size:1.24rem;margin:.45rem 0 .35rem}
+  .duvida span{font-size:.94rem}
+  .duvida .ler{margin-top:.9rem}
+  .icone{width:44px;height:44px;margin-bottom:.9rem;border-radius:12px}
+  .icone svg{width:22px;height:22px}
+
+  .medico{grid-template-columns:1fr;gap:1.5rem}
+  .medico .arco{max-width:15rem;margin:0 auto}
+  .linha-tempo{margin:1.1rem 0}
+  .linha-tempo li{padding:.45rem 0;font-size:.95rem}
+  .linha-tempo b{width:3.4rem;font-size:1.05rem}
+
+  .claro{grid-template-columns:1fr;gap:1.2rem;padding:1.4rem;border-radius:18px}
+  .claro .analogia{padding:1rem 1.1rem;font-size:1rem}
+  .numeros{grid-template-columns:1fr 1fr;gap:1rem;padding:1.3rem;border-radius:18px}
+  .numeros b{font-size:1.3rem}
+  .numeros span{font-size:.86rem}
+  .aval{grid-template-columns:1fr;padding:1.5rem;gap:1.2rem;border-radius:18px}
+  .estrelas svg{width:22px;height:22px}
+  .mapa{height:260px;border-radius:18px}
+
+  .chamada{padding:1.8rem 1.4rem;border-radius:18px}
+  .fone-g{font-size:1.5rem}
+  .duplo-cta{flex-direction:column}
+  .duplo-cta .btn{width:100%}
+  .btn{padding:.9rem 1.4rem;font-size:.98rem}
+  .btn--g{padding:1rem 1.4rem;font-size:1rem}
+
+  .artigo{max-width:none}
+  .laudo__c{font-size:.88rem;padding:1rem}
+  .traducao{padding:1rem 1.1rem;font-size:1.02rem}
+  .alerta,.resumo{padding:1.3rem 1.4rem;border-radius:16px}
+  .perg summary{padding:.95rem 1.1rem;font-size:.98rem}
+  .perg .resp{padding:0 1.1rem 1.1rem 2.9rem}
+  .ferramenta{padding:1.3rem;border-radius:18px}
+
+  .flutua{display:none}
+  .barra{display:flex;padding:.4rem .6rem calc(.4rem + env(safe-area-inset-bottom));gap:.5rem;border-top:1px solid var(--linha)}
+  .barra a{padding:.62rem .4rem;font-size:.92rem;gap:.4rem;box-shadow:none}
+  .barra svg{width:16px;height:16px}
+  .barra .liga{box-shadow:none}
+
+  .crono li{flex-direction:column;gap:.2rem;padding:.8rem 0}
+  .crono time{width:auto;font-size:.95rem}
+  .rodape{padding:2.6rem 0 1.8rem;font-size:.92rem}
+  .rodape__g{grid-template-columns:1fr;gap:1.6rem}
+  .rodape__reg{margin-top:1.8rem;padding-top:1.1rem}
+  .numeros{grid-template-columns:1fr 1fr;padding:1.6rem}
+  .explica{padding:1.9rem}
+  .cartao .dica{opacity:1;max-height:4rem}
   .manifesto p{font-size:1.5rem}
   .claro{padding:1.7rem}
+}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+@media print{
+  .topo,.barra,.flutua,.hero__foto,.duvidas,.chamada,.rodape__g,.mapa{display:none!important}
+  body{font-size:11.5pt;padding:0;color:#000;background:#fff}
+  .hero,.chamada{background:none!important;color:#000}
+  .hero h1,.hero p{color:#000}
+  a{color:#000;text-decoration:none}
+  .sec{padding:1rem 0;page-break-inside:avoid}
+  .rodape{background:none;color:#000;padding-top:1rem}
+  .rodape__reg{color:#000;border-top:1px solid #999}
 }
