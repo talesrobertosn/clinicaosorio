@@ -1,0 +1,368 @@
+/* Centro Médico Osório — folha de estilo v2 */
+
+:root{
+  --tinta:#0A1E42;
+  --tinta-2:#122C57;
+  --azul:#17549C;
+  --agua:#2FB4CF;
+  --agua-esc:#1E93AC;
+  --agua-luz:#E9F7FA;
+  --ambar:#E0A03C;
+  --papel:#F3F7FB;
+  --linha:#E1EAF3;
+  --texto:#2A3B52;
+  --suave:#5E718A;
+  --sombra:0 1px 2px rgba(10,30,66,.04), 0 8px 28px rgba(10,30,66,.07);
+  --sombra-alta:0 2px 6px rgba(10,30,66,.06), 0 22px 50px rgba(10,30,66,.13);
+  --r-g:24px;
+  --r-m:16px;
+  --larg:70rem;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:#FBFDFE;color:var(--texto);
+  font-family:Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:18.5px;line-height:1.75;font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+
+h1,h2,h3{font-family:Fraunces,Georgia,serif;color:var(--tinta);font-weight:500;line-height:1.15;letter-spacing:-.015em;margin:0 0 .5em}
+h1{font-size:3.35rem;font-variation-settings:"SOFT" 20,"opsz" 60}
+h2{font-size:2.3rem;margin-top:0}
+h3{font-size:1.35rem;font-weight:600}
+h4{font-family:Manrope,sans-serif;font-size:1.05rem;font-weight:700;color:var(--tinta);margin:0 0 .5rem}
+p,ul,ol{margin:0 0 1.25em}
+li{margin-bottom:.55em}
+a{color:var(--azul);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;text-decoration-color:rgba(23,84,156,.35)}
+a:hover{color:var(--tinta);text-decoration-color:currentColor}
+strong{font-weight:700;color:var(--tinta)}
+:focus-visible{outline:3px solid var(--agua);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+.env{max-width:var(--larg);margin:0 auto;padding:0 1.6rem}
+.sec{padding:5.5rem 0}
+.sec--papel{background:linear-gradient(180deg,#EDF4FA,#F5FAFC)}
+.sec--agua{background:linear-gradient(180deg,#E9F5F9,#F4FAFC)}
+.sec--fina{padding:3.6rem 0}
+.medida{max-width:40rem}
+.centro{text-align:center;margin-left:auto;margin-right:auto}
+.intro{font-size:1.16rem;color:var(--suave);max-width:38rem}
+.olho{display:inline-flex;align-items:center;gap:.55rem;font-size:.9rem;font-weight:700;color:var(--agua-esc);margin-bottom:.9rem}
+.olho::before{content:"";width:26px;height:2px;background:var(--agua);border-radius:2px}
+
+/* ---------------- cabeçalho ---------------- */
+.topo{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid var(--linha)}
+.topo__l{display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:1.2rem;max-width:78rem;margin:0 auto;padding:.8rem 1.6rem;min-height:78px}
+.marca{display:flex;align-items:center;gap:.65rem;text-decoration:none;min-width:0}
+.marca img{width:46px}
+.marca b{font-family:Manrope,sans-serif;font-size:1.14rem;font-weight:700;color:var(--tinta);letter-spacing:-.022em;line-height:1.1;white-space:nowrap}
+.nav{display:flex;align-items:center;justify-content:flex-end;gap:1.05rem;flex:0 1 auto;min-width:0}
+.nav a{color:var(--tinta);text-decoration:none;font-size:.92rem;font-weight:500;padding:.3rem 0;white-space:nowrap}
+.nav a:hover{color:var(--azul)}
+.nav a[aria-current]{box-shadow:inset 0 -2px 0 var(--agua)}
+.topo .btn{padding:.6rem 1.05rem;font-size:.9rem;box-shadow:0 4px 12px rgba(47,180,207,.28)}
+.hamb{display:none;flex:0 0 auto;align-items:center;gap:.5rem;background:#fff;border:1px solid var(--linha);border-radius:999px;padding:.55rem 1rem;font:inherit;font-size:.92rem;font-weight:600;color:var(--tinta);cursor:pointer}
+
+/* ---------------- botões ---------------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;background:var(--agua);color:#04222B;border:none;border-radius:999px;padding:1.05rem 1.9rem;font:inherit;font-weight:700;font-size:1.03rem;text-decoration:none;cursor:pointer;box-shadow:0 6px 18px rgba(47,180,207,.32);transition:transform .12s,box-shadow .12s,background .12s}
+.btn:hover{background:var(--agua-esc);color:#04222B;transform:translateY(-1px);box-shadow:0 10px 26px rgba(47,180,207,.4)}
+.btn svg{width:19px;height:19px;fill:currentColor;flex-shrink:0}
+.btn--g{padding:1.2rem 2.3rem;font-size:1.12rem}
+.btn--fantasma{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);box-shadow:none}
+.btn--fantasma:hover{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.8);box-shadow:none}
+.btn--linha{background:#fff;color:var(--tinta);border:1.5px solid var(--linha);box-shadow:none}
+.btn--linha:hover{background:var(--papel);color:var(--tinta);border-color:var(--agua);box-shadow:none}
+
+/* ---------------- hero ---------------- */
+.hero{position:relative;background:
+   radial-gradient(900px 520px at 78% 12%, rgba(47,180,207,.20), transparent 62%),
+   radial-gradient(700px 480px at 8% 90%, rgba(23,84,156,.35), transparent 60%),
+   linear-gradient(160deg,#0A1E42 0%,#12305E 100%);
+  color:#fff;overflow:hidden}
+.hero__g{max-width:var(--larg);margin:0 auto;padding:4.6rem 1.6rem 4.6rem;display:grid;grid-template-columns:1.15fr .85fr;gap:3.6rem;align-items:center}
+.hero h1{color:#fff;margin-bottom:1.1rem}
+.hero p{color:#CBDAEC;font-size:1.18rem;max-width:31rem}
+.selo{display:inline-flex;align-items:center;gap:.55rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:.42rem 1rem;font-size:.86rem;font-weight:600;color:#DCE8F7;margin-bottom:1.5rem}
+.selo i{width:7px;height:7px;border-radius:50%;background:var(--agua);display:block}
+.hero__acoes{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem}
+.hero__nota{margin-top:1.5rem;font-size:.95rem;color:#8EA5C4}
+
+/* moldura em arco para as fotos */
+.arco{position:relative}
+.arco__q{position:absolute;inset:-14px -14px 22px 22px;border:1.5px solid rgba(47,180,207,.55);border-radius:999px 999px 26px 26px}
+.arco img{border-radius:999px 999px 26px 26px;box-shadow:var(--sombra-alta);position:relative}
+.arco--claro .arco__q{border-color:rgba(23,84,156,.28)}
+
+/* faixa de credenciais */
+.faixa{background:var(--tinta-2);color:#C7D6EA;border-top:1px solid rgba(255,255,255,.1)}
+.faixa__g{max-width:var(--larg);margin:0 auto;padding:1.7rem 1.6rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.faixa b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:1.6rem;font-weight:500;line-height:1.1;margin-bottom:.15rem}
+.faixa span{font-size:.92rem;line-height:1.4;display:block}
+
+/* ---------------- cartões ---------------- */
+.grade-2{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem}
+.grade-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.cartao{position:relative;background:#fff;border:1px solid var(--linha);border-radius:var(--r-g);padding:2.2rem;box-shadow:var(--sombra);display:flex;flex-direction:column;overflow:hidden;transition:transform .15s,box-shadow .15s,border-color .15s}
+.cartao::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--agua),var(--azul));opacity:.85}
+.cartao--forte::before{background:linear-gradient(90deg,var(--agua),#7FD9E8)}
+.cartao:hover{transform:translateY(-3px);box-shadow:var(--sombra-alta);border-color:#BFE4EC}
+.cartao h3{margin-bottom:.6rem}
+.cartao p{color:var(--suave)}
+.cartao ul{color:var(--suave);padding-left:0;list-style:none;margin-bottom:1.4rem}
+.cartao ul li{padding-left:1.6rem;position:relative}
+.cartao ul li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:8px;border-radius:50%;background:var(--agua)}
+.cartao .fim{margin-top:auto;padding-top:.4rem}
+.icone{width:52px;height:52px;border-radius:14px;background:var(--agua-luz);display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem}
+.icone svg{width:26px;height:26px;fill:var(--agua-esc)}
+.cartao--forte{background:linear-gradient(160deg,#0A1E42,#173764);border-color:transparent;color:#C9D8EC}
+.cartao--forte h3{color:#fff}
+.cartao--forte p,.cartao--forte ul{color:#B9CBE3}
+.cartao--forte .icone{background:rgba(47,180,207,.16)}
+.cartao--forte .icone svg{fill:var(--agua)}
+.cartao--forte a{color:#fff}
+
+/* ---------------- dúvidas (artigos) ---------------- */
+.duvidas{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.duvida{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:13rem;padding:2.1rem;border-radius:var(--r-g);text-decoration:none;background:#fff;border:1px solid var(--linha);box-shadow:var(--sombra);overflow:hidden;transition:transform .15s,box-shadow .15s,border-color .15s}
+.duvida::before{content:"";position:absolute;top:0;left:0;right:0;height:4px}
+.duvida:hover{transform:translateY(-3px);box-shadow:var(--sombra-alta);border-color:#C7E5EC}
+.duvida--1::before{background:linear-gradient(90deg,#2FB4CF,#17549C)}
+.duvida--2::before{background:linear-gradient(90deg,#3FBFA5,#1E93AC)}
+.duvida--3::before{background:linear-gradient(90deg,#17549C,#4B8FD6)}
+.duvida--4::before{background:linear-gradient(90deg,#E0A03C,#D97B4A)}
+.duvida em{font-style:normal;font-size:.79rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.duvida--1 em{color:#1E93AC}.duvida--2 em{color:#2E9A85}.duvida--3 em{color:#17549C}.duvida--4 em{color:#B87B22}
+.duvida b{font-family:Fraunces,Georgia,serif;font-size:1.5rem;font-weight:500;line-height:1.25;color:var(--tinta);display:block;margin:.6rem 0 .5rem}
+.duvida span{font-size:.98rem;color:var(--suave);line-height:1.55}
+.duvida .ler{margin-top:1.3rem;font-size:.94rem;font-weight:700;color:var(--azul);display:inline-flex;align-items:center;gap:.45rem}
+.duvida:hover .ler{color:var(--agua-esc)}
+
+/* ---------------- médico ---------------- */
+.medico{display:grid;grid-template-columns:340px 1fr;gap:3.4rem;align-items:center}
+.chip{display:inline-block;background:#fff;border:1px solid var(--linha);border-radius:999px;padding:.35rem .95rem;font-size:.87rem;font-weight:600;color:var(--tinta);margin:0 .4rem .5rem 0}
+.linha-tempo{list-style:none;padding:0;margin:1.6rem 0}
+.linha-tempo li{display:flex;gap:1.1rem;padding:.55rem 0;margin:0;border-top:1px solid var(--linha)}
+.linha-tempo b{font-family:Fraunces,Georgia,serif;font-size:1.15rem;color:var(--agua-esc);flex-shrink:0;width:4.2rem;font-weight:500}
+
+/* ---------------- avaliações ---------------- */
+.aval{background:#fff;border:1px solid var(--linha);border-radius:var(--r-g);padding:2.6rem;box-shadow:var(--sombra);display:grid;grid-template-columns:1fr auto;gap:2.4rem;align-items:center}
+.estrelas{display:flex;gap:.28rem;margin-bottom:1rem}
+.estrelas svg{width:26px;height:26px;fill:var(--ambar)}
+
+/* ---------------- chamada final ---------------- */
+.chamada{background:linear-gradient(150deg,#0A1E42,#17549C);color:#fff;border-radius:var(--r-g);padding:3.4rem;text-align:center}
+.chamada h2{color:#fff}
+.chamada p{color:#C6D6EB;max-width:34rem;margin-left:auto;margin-right:auto}
+.fone-g{display:inline-flex;align-items:center;gap:.7rem;font-family:Fraunces,Georgia,serif;font-size:2rem;color:#fff;text-decoration:none;margin-top:.4rem}
+.fone-g svg{width:26px;height:26px;fill:var(--agua)}
+
+/* ---------------- conteúdo de artigo ---------------- */
+.artigo{max-width:41rem;margin:0 auto}
+.artigo h2{margin-top:2.8rem}
+.artigo h3{margin-top:2rem}
+.migalha{font-size:.92rem;color:var(--suave);margin-bottom:1.2rem}
+.migalha a{color:var(--suave)}
+.laudo{margin:2.4rem 0 1.4rem;border:1px solid var(--linha);border-radius:var(--r-m);background:var(--papel);overflow:hidden;box-shadow:var(--sombra)}
+.laudo__r{font-size:.75rem;letter-spacing:.14em;font-weight:700;color:var(--suave);padding:.75rem 1.2rem;background:#fff;border-bottom:1px solid var(--linha)}
+.laudo__c{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.95rem;line-height:1.7;color:#33465F;padding:1.2rem;white-space:pre-wrap}
+.traducao{border-left:4px solid var(--agua);background:var(--agua-luz);border-radius:0 var(--r-m) var(--r-m) 0;padding:1.2rem 1.4rem;margin:0 0 2.2rem;font-size:1.1rem;color:var(--tinta)}
+.alerta{border:1px solid #EBD5B4;background:#FDF8F0;border-radius:var(--r-m);padding:1.6rem 1.7rem;margin:2.2rem 0}
+.alerta h3{margin:0 0 .5rem;font-size:1.15rem}
+.alerta p:last-child{margin-bottom:0}
+.resumo{background:var(--papel);border-radius:var(--r-m);padding:1.9rem 2rem;margin:2.6rem 0}
+.resumo h3{margin-top:0}
+.resumo ul{margin-bottom:0}
+.nota{font-size:.93rem;color:var(--suave)}
+
+/* ---------------- perguntas ---------------- */
+.perg details{border:1px solid var(--linha);border-radius:var(--r-m);margin-bottom:.7rem;background:#fff;box-shadow:var(--sombra)}
+.perg summary{cursor:pointer;padding:1.15rem 1.4rem;font-weight:700;color:var(--tinta);list-style:none;display:flex;align-items:center;gap:.9rem}
+.perg summary::-webkit-details-marker{display:none}
+.perg summary::before{content:"+";color:var(--agua-esc);font-size:1.35rem;font-weight:600;width:1rem;flex-shrink:0}
+.perg details[open] summary::before{content:"–"}
+.perg .resp{padding:0 1.4rem 1.3rem 3.3rem}
+.perg .resp p:last-child{margin-bottom:0}
+
+/* ---------------- ferramenta ---------------- */
+.ferramenta{border:1px solid var(--linha);border-radius:var(--r-g);padding:2rem;background:#fff;box-shadow:var(--sombra)}
+.campo{display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end}
+.campo label{display:block;font-size:.9rem;font-weight:600;color:var(--suave);margin-bottom:.4rem}
+.campo input{font:inherit;font-size:1rem;padding:.75rem .9rem;border:1.5px solid var(--linha);border-radius:10px;color:var(--texto);background:#fff}
+.campo input:focus{border-color:var(--agua)}
+.crono{list-style:none;padding:0;margin:1.6rem 0 0}
+.crono li{display:flex;gap:1.2rem;padding:1rem 0;border-top:1px solid var(--linha);margin:0}
+.crono time{flex-shrink:0;width:11rem;font-weight:700;color:var(--tinta)}
+.oculto{display:none}
+.checklist{list-style:none;padding:0;margin:1.2rem 0 0}
+.checklist li{margin:0;border-bottom:1px solid var(--linha)}
+.checklist label{display:flex;gap:.9rem;align-items:flex-start;padding:.85rem .2rem;cursor:pointer}
+.checklist input{margin-top:.4rem;width:1.15rem;height:1.15rem;accent-color:var(--agua);flex-shrink:0}
+.checklist input:checked + span{color:var(--suave);text-decoration:line-through}
+
+/* ---------------- contato ---------------- */
+.dado{border-top:1px solid var(--linha);padding:1.3rem 0}
+.dado dt{font-size:.87rem;font-weight:700;color:var(--suave);margin-bottom:.2rem}
+.dado dd{margin:0;font-size:1.1rem;color:var(--tinta)}
+.dado dd a{color:var(--tinta)}
+.copiar{background:#fff;border:1.5px solid var(--linha);border-radius:999px;padding:.5rem 1.1rem;font:inherit;font-size:.9rem;font-weight:600;color:var(--azul);cursor:pointer;margin-top:.7rem}
+.copiar:hover{border-color:var(--agua)}
+.mapa{border:0;width:100%;height:400px;border-radius:var(--r-g);box-shadow:var(--sombra)}
+.pendente{color:var(--suave);font-style:italic}
+
+/* ---------------- flutuante e barra ---------------- */
+.flutua{position:fixed;right:1.6rem;bottom:1.6rem;z-index:70}
+.flutua__p{display:none;background:#fff;border:1px solid var(--linha);border-radius:var(--r-m);box-shadow:var(--sombra-alta);padding:1.3rem 1.4rem;margin-bottom:.8rem;min-width:17rem}
+.flutua[data-aberto="1"] .flutua__p{display:block}
+.flutua__p a{display:block;color:var(--tinta);text-decoration:none;padding:.4rem 0;font-weight:600;font-size:.97rem}
+.flutua__p a:hover{color:var(--azul)}
+.flutua__p span{display:block;font-size:.85rem;color:var(--suave);margin-top:.6rem;font-weight:400}
+.barra{display:none;position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(255,255,255,.97);backdrop-filter:blur(10px);border-top:1px solid var(--linha);padding:.6rem .8rem calc(.6rem + env(safe-area-inset-bottom));gap:.6rem}
+.barra a{flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.95rem .5rem;border-radius:999px;text-decoration:none;font-weight:700}
+.barra .liga{background:var(--agua);color:#04222B}
+.barra .mapa-b{background:#fff;color:var(--tinta);border:1.5px solid var(--linha)}
+.barra svg{width:19px;height:19px;fill:currentColor}
+
+/* ---------------- rodapé ---------------- */
+.rodape{background:var(--tinta);color:#A8BCD6;padding:4rem 0 2.4rem;font-size:.97rem}
+.rodape a{color:#fff;text-decoration:none}
+.rodape a:hover{text-decoration:underline}
+.rodape__g{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem}
+.rodape h4{color:#fff;font-size:.82rem;letter-spacing:.12em;font-weight:700;margin:0 0 1rem}
+.rodape ul{list-style:none;padding:0;margin:0}
+.rodape li{margin-bottom:.6rem}
+.rodape__m{display:flex;align-items:center;gap:.8rem;margin-bottom:1.1rem}
+.rodape__m img{width:52px}
+.rodape__m b{font-family:Fraunces,Georgia,serif;font-size:1.32rem;color:#fff;font-weight:500}
+.rodape__reg{border-top:1px solid rgba(255,255,255,.15);margin-top:3rem;padding-top:1.6rem;font-size:.88rem;color:#8299B7}
+.rodape__reg b{color:#D5E1F0}
+
+/* ---------------- responsivo ---------------- */
+@media (max-width:1240px){
+  h1{font-size:2.9rem}
+  h2{font-size:2.05rem}
+  .hero__g{grid-template-columns:1fr;gap:3rem;padding-top:3.6rem}
+  .hero__foto{max-width:23rem;margin:0 auto}
+  .hero p{max-width:none}
+  .grade-3,.duvidas{grid-template-columns:1fr 1fr}
+  .medico{grid-template-columns:1fr;gap:2.2rem}
+  .medico .arco{max-width:20rem}
+  .faixa__g{grid-template-columns:1fr 1fr;gap:1.3rem}
+  .aval{grid-template-columns:1fr;text-align:left}
+  .rodape__g{grid-template-columns:1fr 1fr}
+}
+@media (max-width:1000px){
+  body{font-size:17.5px;padding-bottom:5rem}
+  h1{font-size:2.3rem}
+  h2{font-size:1.75rem}
+  .marca img{width:40px}
+  .marca b{font-size:1rem}
+  .topo__l{gap:.8rem;min-height:70px}
+  .hamb{padding:.5rem .9rem;font-size:.88rem}
+  .btn--g{padding:1.05rem 1.5rem;font-size:1.02rem}
+  .arco__q{inset:-10px -10px 16px 16px}
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--linha);flex-direction:column;align-items:stretch;gap:0;padding:.6rem 1.6rem 1.4rem;box-shadow:var(--sombra)}
+  .nav[data-aberto="1"]{display:flex}
+  .nav a{padding:.85rem 0;border-bottom:1px solid var(--linha)}
+  .nav .btn{margin-top:.9rem;justify-content:center}
+  .hamb{display:inline-flex}
+  .topo>.topo__l>.btn{display:none}
+  .sec{padding:3.8rem 0}
+  .grade-2,.grade-3,.duvidas{grid-template-columns:1fr}
+  .cartao,.chamada,.aval{padding:1.8rem}
+  .flutua{display:none}
+  .barra{display:flex}
+  .crono li{flex-direction:column;gap:.2rem}
+  .crono time{width:auto}
+  .rodape__g{grid-template-columns:1fr;gap:2.2rem}
+  .fone-g{font-size:1.6rem}
+}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+@media print{
+  .topo,.barra,.flutua,.hero__foto,.duvidas,.chamada,.rodape__g,.mapa{display:none!important}
+  body{font-size:11.5pt;padding:0;color:#000;background:#fff}
+  .hero,.chamada{background:none!important;color:#000}
+  .hero h1,.hero p{color:#000}
+  a{color:#000;text-decoration:none}
+  .sec{padding:1rem 0;page-break-inside:avoid}
+  .rodape{background:none;color:#000;padding-top:1rem}
+  .rodape__reg{color:#000;border-top:1px solid #999}
+}
+
+
+/* ---------- acréscimos v2.1 ---------- */
+
+/* botão de WhatsApp, no azul da casa */
+.btn--zap{background:var(--azul);color:#fff;box-shadow:0 6px 18px rgba(23,84,156,.3)}
+.btn--zap:hover{background:#12457F;color:#fff;box-shadow:0 10px 26px rgba(23,84,156,.38)}
+
+/* painel flutuante: opções com cara de botão */
+.flutua__p{padding:1.1rem}
+.flutua__p .tit{font-size:.78rem;letter-spacing:.1em;font-weight:700;color:var(--suave);margin:0 0 .8rem}
+.flutua__p a{display:flex;align-items:center;gap:.7rem;padding:.8rem 1rem;margin-bottom:.55rem;border-radius:12px;background:var(--papel);border:1.5px solid var(--linha);color:var(--tinta);font-weight:700;font-size:.95rem;text-decoration:none;transition:border-color .14s,background .14s,transform .14s}
+.flutua__p a:last-of-type{margin-bottom:0}
+.flutua__p a:hover{background:#fff;border-color:var(--agua);transform:translateX(2px)}
+.flutua__p a svg{width:19px;height:19px;fill:var(--azul);flex-shrink:0}
+.flutua__p a.zap svg{fill:#fff}
+.flutua__p a.zap{background:var(--azul);border-color:var(--azul);color:#fff}
+.flutua__p a.zap:hover{background:#12457F;border-color:#12457F}
+.flutua__p .end{display:block;font-size:.85rem;color:var(--suave);font-weight:400;margin-top:.9rem;line-height:1.5}
+
+/* explicação em destaque */
+.explica{background:linear-gradient(150deg,#0A1E42,#17549C);color:#D7E4F3;border-radius:var(--r-g);padding:2.6rem 2.8rem}
+.explica h2{color:#fff;margin-bottom:.7rem}
+.explica p{color:#CBDCEE}
+.explica p:last-child{margin-bottom:0}
+.explica .destaque{font-size:1.25rem;color:#fff;border-left:4px solid var(--agua);padding-left:1.2rem;margin:1.6rem 0}
+
+/* faixa de números clara, para as páginas internas */
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;background:#fff;border:1px solid var(--linha);border-radius:var(--r-g);padding:2rem 2.2rem;box-shadow:var(--sombra)}
+.numeros b{display:block;font-family:Fraunces,Georgia,serif;font-size:1.75rem;font-weight:500;color:var(--tinta);line-height:1.1;margin-bottom:.2rem}
+.numeros span{font-size:.93rem;color:var(--suave);line-height:1.45;display:block}
+
+/* dica que aparece ao passar o mouse nos cartões de serviço */
+.cartao .dica{margin-top:1rem;font-size:.94rem;color:var(--agua-esc);font-weight:600;opacity:0;max-height:0;overflow:hidden;transition:opacity .18s,max-height .18s}
+.cartao:hover .dica,.cartao:focus-within .dica{opacity:1;max-height:4rem}
+
+/* faixa de contato dupla */
+.duplo-cta{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center}
+
+@media (max-width:1240px){.numeros{grid-template-columns:1fr 1fr}}
+@media (max-width:1000px){
+  .numeros{grid-template-columns:1fr 1fr;padding:1.6rem}
+  .explica{padding:1.9rem}
+  .cartao .dica{opacity:1;max-height:4rem}
+}
+
+
+/* ---------- acréscimos v2.2 ---------- */
+
+/* frase de impacto, sem caixa */
+.manifesto{max-width:46rem;margin:0 auto;text-align:center}
+.manifesto .risco{width:52px;height:3px;background:var(--agua);border-radius:3px;margin:0 auto 1.8rem}
+.manifesto p{font-family:Fraunces,Georgia,serif;font-size:2.05rem;line-height:1.32;color:var(--tinta);font-weight:400;letter-spacing:-.01em;margin:0 0 1.2rem}
+.manifesto p em{font-style:normal;color:var(--agua-esc)}
+.manifesto .assina{font-size:.97rem;color:var(--suave);margin:0}
+
+/* explicação em versão clara, sem painel azul */
+.claro{display:grid;grid-template-columns:1.05fr .95fr;gap:2.6rem;align-items:center;background:#fff;border:1px solid var(--linha);border-radius:var(--r-g);padding:2.6rem 2.8rem;box-shadow:var(--sombra)}
+.claro h2{margin-bottom:.7rem}
+.claro .analogia{background:var(--agua-luz);border-left:4px solid var(--agua);border-radius:0 14px 14px 0;padding:1.3rem 1.5rem;font-size:1.08rem;color:var(--tinta)}
+.claro .analogia b{display:block;font-size:.78rem;letter-spacing:.1em;color:var(--agua-esc);margin-bottom:.5rem}
+
+/* terceiro cartão de serviço */
+.grade-servicos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+
+@media (max-width:1240px){
+  .claro{grid-template-columns:1fr;gap:1.8rem;padding:2rem}
+  .grade-servicos{grid-template-columns:1fr}
+  .manifesto p{font-size:1.72rem}
+}
+@media (max-width:1000px){
+  .manifesto p{font-size:1.5rem}
+  .claro{padding:1.7rem}
+}

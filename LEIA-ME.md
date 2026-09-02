@@ -1,173 +1,175 @@
-# Site do Centro Médico Osório — publicação e manutenção
+# Site do Centro Médico Osório
 
-Site estático, sem dependência de servidor. Basta subir os arquivos.
+Site estático. Todas as páginas ficam soltas na raiz, sem subpastas: a única pasta é `assets`, com imagens, folha de estilo e script.
 
 ---
 
-## 1. Antes de publicar: quatro trocas obrigatórias
+## 1. Subir no GitHub, pelo navegador
 
-### 1.1 Link de avaliação do Google
-Em `avaliacao/index.html`, procure por `SEU_PLACE_ID` e troque pelo link direto de avaliação.
-Onde obter: no painel do Perfil da Empresa no Google, opção de pedir avaliações. O link já abre a janela com as estrelas prontas, o que aumenta muito a conclusão no celular.
+1. Crie um repositório novo.
+2. Clique em "Add file", "Upload files".
+3. Arraste tudo de uma vez: os arquivos `.html`, o `robots.txt`, o `.nojekyll` e a pasta `assets` inteira. O GitHub aceita arrastar a pasta e mantém a estrutura.
+4. Commit.
+5. Em Settings, Pages, escolha branch `main` e pasta `/ (root)`.
 
-### 1.2 Domínio: por enquanto, nenhum
+O arquivo `.nojekyll` já está incluso e evita que o GitHub processe os arquivos.
 
-O site não declara endereço nenhum. Não há canonical, não há og:url e não há sitemap.xml.
-Isso é proposital: apontar o Google para um endereço que ainda não existe é pior que não apontar para nada. O site funciona normalmente assim, em qualquer lugar onde for hospedado.
+Os caminhos são relativos, então o site funciona aberto direto do computador, em subpasta de repositório e em domínio próprio, sem ajuste nenhum.
 
-Quando o domínio estiver registrado e apontado, rode uma vez, dentro da pasta do site:
+---
+
+## 2. Antes de divulgar: três trocas
+
+### 2.1 Link de avaliação do Google
+Procure `SEU_PLACE_ID` e troque pelo link direto de avaliação. Ele está em dois lugares: `index.html` e `avaliacao.html`.
+Onde obter: painel do Perfil da Empresa no Google, opção de pedir avaliações. Esse link abre a janela com as estrelas prontas, o que aumenta muito a conclusão no celular.
 
 ```bash
-python3 definir-dominio.py https://clinicaosorio.com.br
+grep -rl "SEU_PLACE_ID" . | xargs sed -i 's|https://search.google.com/local/writereview?placeid=SEU_PLACE_ID|SEU_LINK_AQUI|g'
 ```
 
-O script insere canonical e og:url em cada página, deixa a imagem de compartilhamento com endereço absoluto (é o que faz a pré-visualização aparecer no WhatsApp), completa os dados estruturados e gera o sitemap.xml e o robots.txt. Depois é só enviar o sitemap no Search Console.
-
-O mesmo script serve para o endereço provisório do GitHub Pages, caso você queira que o site já seja indexado antes do domínio:
-
-```bash
-python3 definir-dominio.py https://usuario.github.io/clinicaosorio
-```
-
-Nesse caso não há prejuízo na troca depois: quando você define um domínio próprio, o GitHub passa a redirecionar o endereço antigo para o novo, e basta rodar o script de novo com o endereço definitivo.
-
-Enquanto não houver endereço definido, a pré-visualização do link no WhatsApp não mostra imagem. Isso se resolve sozinho quando o script rodar.
-
-### 1.3 Coordenadas do mapa
-No bloco de dados estruturados de cada página há `latitude` e `longitude` aproximadas do Edifício Wawel.
-Confirme o ponto exato no Google Maps (clique no local, copie as coordenadas) e substitua:
+### 2.2 Coordenadas do mapa
+Os dados estruturados usam coordenadas aproximadas do Edifício Wawel. Confirme no Google Maps (clique no local, copie as coordenadas) e substitua:
 
 ```bash
 grep -rl '"latitude":-25.4306' . | xargs sed -i 's|"latitude":-25.4306,"longitude":-49.2733|"latitude":LAT,"longitude":LON|g'
 ```
 
-### 1.4 Especialidade do RQE
-Confirme no portal do CRM-PR a qual especialidade corresponde o RQE 5109 e escreva-a ao lado do registro na página do médico. Enquanto não confirmar, o site anuncia apenas procedimentos e condições, o que já está correto do ponto de vista da Resolução CFM 1.974/2011.
-
----
-
-## 2. Publicar no GitHub Pages
+### 2.3 Endereço do site
+Enquanto não houver domínio, o site não declara endereço nenhum. Quando houver, rode uma vez:
 
 ```bash
-git init
-git add .
-git commit -m "Site do Centro Médico Osório"
-git branch -M main
-git remote add origin git@github.com:USUARIO/REPOSITORIO.git
-git push -u origin main
+python3 definir-dominio.py https://clinicaosorio.com.br
 ```
 
-Depois: Settings, Pages, Source: branch `main`, pasta `/ (root)`.
+O script insere canonical e og:url em cada página, deixa a imagem de compartilhamento absoluta (é o que faz a pré-visualização aparecer no WhatsApp), completa os dados estruturados e gera `sitemap.xml` e `robots.txt`. Depois é só enviar o sitemap no Search Console.
 
-O arquivo `.nojekyll` já está incluso e evita que o GitHub processe as pastas.
-
-### Domínio próprio (registro.br)
-
-1. No registro.br, aponte para o GitHub Pages:
-   - Quatro registros A: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - Um CNAME `www` apontando para `USUARIO.github.io`
-2. Em Settings, Pages, Custom domain, informe o domínio. O GitHub cria o arquivo `CNAME` no repositório. Nunca apague esse arquivo em envios futuros.
-3. Marque "Enforce HTTPS" depois que o certificado for emitido.
-4. Registre o domínio no CPF do Dr. Omar ou no CNPJ da clínica, não em nome de terceiro.
-
-### Atenção aos caminhos
-
-Todos os endereços internos são relativos, então o site funciona aberto direto do computador (clicando no index.html), em subpasta de repositório do tipo `usuario.github.io/clinicaosorio/` e em domínio próprio, sem nenhum ajuste.
-
-O `canonical`, o Open Graph e o `sitemap.xml` continuam apontando para o domínio final, que é o correto para o Google.
+Serve também para o endereço provisório do GitHub Pages, se quiser começar a indexar antes do domínio. Quando o domínio próprio entrar, o GitHub redireciona o endereço antigo e basta rodar o script de novo.
 
 ---
 
-## 3. Depois de publicar
+## 3. Domínio próprio (registro.br)
 
-1. Google Search Console: adicionar a propriedade, verificar por registro TXT no registro.br, enviar `sitemap.xml`.
-2. Perfil da Empresa no Google: conferir se nome, endereço e telefone estão idênticos aos do site, letra por letra. Acrescentar o endereço do site.
-3. Perfis MedPrev e Doctoralia: completar e incluir o link do site.
+1. Registros A apontando para: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+2. CNAME `www` apontando para `usuario.github.io`
+3. Settings, Pages, Custom domain. O GitHub cria o arquivo `CNAME` no repositório; nunca apague em envios futuros.
+4. Marque "Enforce HTTPS" quando o certificado sair.
+5. Registre o domínio no CPF do Dr. Omar ou no CNPJ da clínica.
+
+---
+
+## 4. Depois de publicar
+
+1. Search Console: adicionar a propriedade, verificar por TXT no registro.br, enviar o sitemap.
+2. Perfil da Empresa no Google: nome, endereço e telefone idênticos aos do site, letra por letra. Acrescentar o endereço do site.
+3. MedPrev e Doctoralia: completar e incluir o link do site.
 4. Testar os dados estruturados em `search.google.com/test/rich-results`.
-5. Compartilhar o link em uma conversa de WhatsApp para conferir se a imagem de pré-visualização aparece.
+5. QR code na recepção apontando para `avaliacao.html`.
 
 ---
 
-## 4. Botão de WhatsApp
+## 5. Botão de WhatsApp
 
-Ainda não existe número confirmado, então a barra fixa do celular usa Ligar e Como chegar.
-Quando o número existir, edite `assets/site.js`? Não: os botões estão no HTML de todas as páginas. Rode:
+Os botões de WhatsApp já estão no site: no topo da página inicial, na barra fixa do celular, no painel flutuante do computador, na página de contato e em todas as faixas de agendamento. Só falta o número.
+
+Todos apontam para `https://wa.me/55SEUNUMERO`. Assim que tiver o número, rode uma vez, dentro da pasta:
 
 ```bash
-grep -rl 'class="zap"' . | xargs sed -i 's|<a class="zap" href="[^"]*" target="_blank" rel="noopener">|<a class="zap" href="https://wa.me/5541999999999?text=Ol%C3%A1%2C%20gostaria%20de%20agendar" target="_blank" rel="noopener">|'
+grep -rl "55SEUNUMERO" . | xargs sed -i 's|55SEUNUMERO|5541999999999|g'
 ```
 
-Trocando `5541999999999` pelo número real, com 55 na frente e sem espaços. Troque também o texto do botão de "Como chegar" para "WhatsApp".
+Trocando `5541999999999` pelo número real, com o 55 na frente, DDD, e sem espaços, traços ou parênteses.
 
----
+Enquanto não trocar, o botão leva a uma página de erro do WhatsApp. Ou você troca antes de divulgar, ou remove os botões.
 
-## 5. Como acrescentar coisas
+## 6. Como acrescentar coisas
 
 ### Um novo médico
-Abra `corpo-clinico/index.html`. Há um bloco comentado com o modelo pronto: copie, troque os dados, descomente. Cada profissional precisa do próprio CRM e do próprio RQE, e só pode ter anunciada a especialidade que tiver RQE registrado.
+Duplique o bloco `.medico` de `dr-omar.html` para uma página nova, por exemplo `dra-fulana.html`, e acrescente um cartão em `index.html`. Cada profissional precisa do próprio CRM e do próprio RQE, e só pode ter anunciada a especialidade que tiver RQE registrado no Conselho.
 
 ### Um novo convênio
-Abra `convenios/index.html` e acrescente na lista. Quando a lista estiver completa, remova o parágrafo em itálico que avisa que ela está sendo atualizada.
+`convenios.html`, na lista. Quando a lista estiver completa, apague o parágrafo em itálico que avisa que ela está sendo atualizada.
 
-### Um novo artigo
-Duplique a pasta `artigos/gastrite-enantematosa-leve-antro/`, renomeie, troque o conteúdo e:
-1. acrescente o item na lista em `artigos/index.html`;
-2. acrescente a URL no `sitemap.xml`;
-3. atualize o `canonical`, o `og:url` e o bloco de dados estruturados no topo do arquivo novo;
-4. reenvie o sitemap no Search Console e peça a indexação da URL nova.
+### Um novo texto de dúvida
+1. Duplique `unha-encravada.html` e troque o conteúdo.
+2. Acrescente o cartão em `duvidas.html` e, se for importante, em `index.html`. O padrão do cartão é:
 
-O bloco de laudo é o elemento de assinatura do site. A estrutura é:
+```html
+<a class="duvida duvida--2" href="ARQUIVO.html">
+  <div><em>Categoria</em><b>Título chamativo</b><span>Uma linha de resumo.</span></div>
+  <span class="ler">Ler agora</span>
+</a>
+```
+
+As variações `duvida--1` a `duvida--4` mudam só a cor do fundo.
+
+3. Rode `definir-dominio.py` de novo para atualizar o sitemap, e peça a indexação no Search Console.
+
+### O bloco de laudo
+É o elemento de assinatura do site, usado nas páginas que traduzem achados de exame:
 
 ```html
 <div class="laudo">
-  <div class="laudo__rot">TRECHO DO LAUDO</div>
-  <div class="laudo__corpo">texto do laudo, com as quebras de linha reais</div>
+  <div class="laudo__r">TRECHO DO LAUDO</div>
+  <div class="laudo__c">texto do laudo, com as quebras de linha reais</div>
 </div>
 <p class="traducao">Em português claro: ...</p>
 ```
 
 ---
 
-## 6. Regras de conteúdo que não podem ser violadas
+## 7. Regras de conteúdo que não podem ser violadas
 
-- Rodapé com nome, CRM e RQE em todas as páginas. Já está automático.
+- Rodapé com nome, CRM e RQE em todas as páginas. Já é automático.
 - Sem depoimento de paciente reproduzido dentro do site.
 - Sem imagem de paciente real, sem antes e depois.
 - Sem superlativo: nada de melhor, referência, excelência.
 - Sem promessa de resultado. Benefício e limite sempre juntos.
 - Nada oferecido em troca de avaliação.
+- A clínica atende clínica e cirurgia geral de modo amplo; endoscopia e cirurgia ambulatorial são os focos, mas o site não fecha o atendimento nesses dois.
+- Só se anuncia a especialidade com RQE registrado. O RQE 5109 é de Cirurgia Geral, e é assim que aparece no site. Os demais assuntos aparecem como procedimentos e condições atendidas, o que é permitido e captura a busca do mesmo jeito.
 
 ---
 
-## 7. Estrutura dos arquivos
+## 8. Design
 
-```
-index.html                      Home
-endoscopia/                     Serviço principal
-endoscopia/preparo/             Preparo, com a ferramenta de horários
-cirurgia-ambulatorial/          Serviço
-consultas/                      Serviço
-corpo-clinico/                  Lista de médicos
-corpo-clinico/dr-omar-.../      Perfil e dados estruturados do médico
-artigos/                        Índice
-artigos/gastrite-.../           Primeiro artigo
-convenios/  contato/  avaliacao/  privacidade/
-404.html  sitemap.xml  robots.txt  .nojekyll
-assets/site.css                 Folha de estilo única
-assets/site.js                  Menu, contato, copiar endereço, ferramenta de preparo
-assets/                         Imagens em WebP com alternativa JPG ou PNG
-```
+Paleta: `--tinta #0A1E42` (azul-noite), `--azul #17549C`, `--agua #2FB4CF` (turquesa), `--papel #F3F7FB`, `--ambar #E0A03C` (só nas estrelas de avaliação).
 
-Paleta: `--tinta #0E2148`, `--azul #1B58A6`, `--agua #2BB3CE`, `--papel #F6F9FB`.
 Regra da casa: o turquesa é cor de ação. Botão, link de contato, foco de teclado. Nunca decoração, nunca título.
 
-Tipografia: Newsreader nos títulos, Public Sans no corpo, corpo em 18 pixels.
+Tipografia: Fraunces nos títulos, Manrope no corpo, texto em 18,5 pixels, entrelinha 1,75.
+
+Fotos ficam dentro de molduras em arco (`.arco`), com anel turquesa deslocado atrás.
+
+Tudo em um arquivo só: `assets/site.css`.
 
 ---
 
-## 8. Pendências conhecidas
+## 9. Páginas
 
-- Logos vieram de arquivo com fundo branco; o recorte foi feito automaticamente. Se conseguir os originais em SVG ou PNG com transparência, substitua em `assets/`.
-- A marca vertical com o wordmark veio de captura de tela em baixa resolução e por isso não foi usada no site, apenas o símbolo. Com o arquivo original, ela pode entrar no rodapé.
+```
+index.html                   Home
+endoscopia.html              Serviço
+preparo-endoscopia.html      Preparo, com a ferramenta de horários
+cirurgia-ambulatorial.html   Serviço
+consultas.html               Serviço
+dr-omar.html                 Perfil do médico
+duvidas.html                 Índice dos textos
+azia-e-queimacao.html        Texto
+gastrite-no-laudo.html       Texto, com o bloco de laudo
+unha-encravada.html          Texto
+caroco-na-pele.html          Texto
+convenios.html  contato.html  avaliacao.html  privacidade.html  404.html
+robots.txt  .nojekyll  definir-dominio.py
+assets/                      imagens, site.css, site.js
+```
+
+---
+
+## 10. Pendências
+
 - Horário de atendimento não informado: a página de contato mostra "confirme por telefone".
-- Fotos que faltam e que teriam mais impacto: o médico sentado no consultório em conversa, e a sala de endoscopia com o equipamento, sem paciente.
+- Lista completa de convênios.
+- Número de WhatsApp.
+- Logos: vieram com fundo branco e o recorte foi automático. Com os originais em SVG ou PNG transparente, é só substituir em `assets`.
+- Fotos que fariam diferença: o médico sentado no consultório em conversa, e a sala de endoscopia com o equipamento, sem paciente.
