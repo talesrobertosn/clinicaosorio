@@ -35,24 +35,22 @@ Os dados estruturados usam coordenadas aproximadas do Edifício Wawel. Confirme 
 grep -rl '"latitude":-25.4306' . | xargs sed -i 's|"latitude":-25.4306,"longitude":-49.2733|"latitude":LAT,"longitude":LON|g'
 ```
 
-### 2.3 Endereço do site
-Enquanto não houver domínio, o site não declara endereço nenhum. Quando houver, rode uma vez:
+### 2.3 Endereço do site — já aplicado
+
+O site já está apontado para `https://centromedicosorio.com.br`. Canonical, og:url, imagem de compartilhamento, dados estruturados, `sitemap.xml` e `robots.txt` estão todos com esse endereço, e o arquivo `CNAME` já vem pronto no pacote.
+
+Se o domínio registrado for outro, rode uma vez dentro da pasta e edite o CNAME:
 
 ```bash
-python3 definir-dominio.py https://clinicaosorio.com.br
+python3 definir-dominio.py https://ODOMINIOCERTO.com.br
+echo "odominiocerto.com.br" > CNAME
 ```
-
-O script insere canonical e og:url em cada página, deixa a imagem de compartilhamento absoluta (é o que faz a pré-visualização aparecer no WhatsApp), completa os dados estruturados e gera `sitemap.xml` e `robots.txt`. Depois é só enviar o sitemap no Search Console.
-
-Serve também para o endereço provisório do GitHub Pages, se quiser começar a indexar antes do domínio. Quando o domínio próprio entrar, o GitHub redireciona o endereço antigo e basta rodar o script de novo.
-
----
 
 ## 3. Domínio próprio (registro.br)
 
 1. Registros A apontando para: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
 2. CNAME `www` apontando para `usuario.github.io`
-3. Settings, Pages, Custom domain. O GitHub cria o arquivo `CNAME` no repositório; nunca apague em envios futuros.
+3. Settings, Pages, Custom domain: informe `centromedicosorio.com.br`. O arquivo `CNAME` já está no pacote; nunca apague em envios futuros.
 4. Marque "Enforce HTTPS" quando o certificado sair.
 5. Registre o domínio no CPF do Dr. Omar ou no CNPJ da clínica.
 
