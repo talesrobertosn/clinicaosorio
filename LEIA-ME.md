@@ -20,12 +20,19 @@ Os caminhos são relativos, então o site funciona aberto direto do computador, 
 
 ## 2. Antes de divulgar: três trocas
 
-### 2.1 Link de avaliação do Google
-Procure `SEU_PLACE_ID` e troque pelo link direto de avaliação. Ele está em dois lugares: `index.html` e `avaliacao.html`.
-Onde obter: painel do Perfil da Empresa no Google, opção de pedir avaliações. Esse link abre a janela com as estrelas prontas, o que aumenta muito a conclusão no celular.
+### 2.1 Link de avaliação do Google — aplicado, mas dá para melhorar
+
+Os botões "Avaliar no Google" (na home e em `avaliacao.html`) usam hoje o link curto do perfil: `https://share.google/lWadXp8W3LIXvR18x`. Funciona: abre o perfil, e de lá a pessoa avalia.
+
+O ideal é o link direto de avaliação, que já abre a janela com as cinco estrelas prontas. Cada toque a menos aumenta bastante a taxa de conclusão no celular. Como obter:
+
+- Depois de reivindicar o perfil: no painel do Perfil da Empresa, opção de pedir avaliações. Ele entrega o link pronto.
+- Sem reivindicar: abra o perfil no computador, clique em Escrever avaliação e copie o endereço que aparece na barra do navegador.
+
+Quando tiver esse link, troque nas duas páginas:
 
 ```bash
-grep -rl "SEU_PLACE_ID" . | xargs sed -i 's|https://search.google.com/local/writereview?placeid=SEU_PLACE_ID|SEU_LINK_AQUI|g'
+grep -rl "share.google/lWadXp8W3LIXvR18x" . | xargs sed -i 's|https://share.google/lWadXp8W3LIXvR18x|SEU_LINK_DIRETO|g'
 ```
 
 ### 2.2 Coordenadas do mapa
