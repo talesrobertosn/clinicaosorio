@@ -66,6 +66,18 @@ strong{font-weight:700;color:var(--tinta)}
 .topo .btn{padding:.6rem 1.05rem;font-size:.9rem;box-shadow:0 4px 12px rgba(47,180,207,.28)}
 .hamb{display:none;flex:0 0 auto;align-items:center;gap:.5rem;background:#fff;border:1px solid var(--linha);border-radius:999px;padding:.55rem 1rem;font:inherit;font-size:.92rem;font-weight:600;color:var(--tinta);cursor:pointer}
 
+.topo-cta{position:relative;flex:0 0 auto}
+.topo-cta__btn{border:none}
+.topo-cta__p{display:none;position:absolute;top:calc(100% + .7rem);right:0;background:#fff;border:1px solid var(--linha);border-radius:var(--r-m);box-shadow:var(--sombra-alta);padding:.7rem;min-width:15.5rem;z-index:61}
+.topo-cta[data-aberto="1"] .topo-cta__p{display:block}
+.topo-cta__p a{display:flex;align-items:center;gap:.65rem;padding:.75rem .9rem;margin-bottom:.4rem;border-radius:11px;background:var(--papel);border:1.5px solid var(--linha);color:var(--tinta);font-weight:700;font-size:.92rem;text-decoration:none;transition:border-color .14s,background .14s,transform .14s}
+.topo-cta__p a:last-child{margin-bottom:0}
+.topo-cta__p a:hover{background:#fff;border-color:var(--agua);transform:translateX(2px)}
+.topo-cta__p a svg{width:18px;height:18px;fill:var(--azul);flex-shrink:0}
+.topo-cta__p a.zap{background:var(--azul);border-color:var(--azul);color:#fff}
+.topo-cta__p a.zap svg{fill:#fff}
+.topo-cta__p a.zap:hover{background:#12457F;border-color:#12457F}
+
 /* ---------------- botões ---------------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;background:var(--agua);color:#04222B;border:none;border-radius:999px;padding:1.05rem 1.9rem;font:inherit;font-weight:700;font-size:1.03rem;text-decoration:none;cursor:pointer;box-shadow:0 6px 18px rgba(47,180,207,.32);transition:transform .12s,box-shadow .12s,background .12s}
 .btn:hover{background:var(--agua-esc);color:#04222B;transform:translateY(-1px);box-shadow:0 10px 26px rgba(47,180,207,.4)}
@@ -89,6 +101,8 @@ strong{font-weight:700;color:var(--tinta)}
 .selo i{width:7px;height:7px;border-radius:50%;background:var(--agua);display:block}
 .hero__acoes{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem}
 .hero__nota{margin-top:1.5rem;font-size:.95rem;color:#8EA5C4}
+.hero__convenios{margin-top:.55rem;font-size:.82rem;line-height:1.6;color:#6E88AC}
+.hero__convenios a{color:#9DB8D9}
 
 /* moldura em arco para as fotos */
 .arco{position:relative}
@@ -98,9 +112,11 @@ strong{font-weight:700;color:var(--tinta)}
 
 /* faixa de credenciais */
 .faixa{background:var(--tinta-2);color:#C7D6EA;border-top:1px solid rgba(255,255,255,.1)}
-.faixa__g{max-width:var(--larg);margin:0 auto;padding:1.7rem 1.6rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.faixa__g{max-width:var(--larg);margin:0 auto;padding:2.1rem 1.6rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
 .faixa b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:1.6rem;font-weight:500;line-height:1.1;margin-bottom:.15rem}
 .faixa span{font-size:.92rem;line-height:1.4;display:block}
+.faixa__ic{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:rgba(47,180,207,.16);margin-bottom:.85rem}
+.faixa__ic svg{width:20px;height:20px;fill:var(--agua)}
 
 /* ---------------- cartões ---------------- */
 .grade-2{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem}
@@ -336,6 +352,9 @@ strong{font-weight:700;color:var(--tinta)}
   .nav a{padding:.8rem 0;border-bottom:1px solid var(--linha)}
   .nav .btn{margin-top:.8rem;justify-content:center}
   .topo>.topo__l>.btn{display:none}
+  .topo-cta{margin-top:.8rem}
+  .topo-cta__btn{width:100%;justify-content:center}
+  .topo-cta__p{position:static;box-shadow:none;margin-top:.6rem;min-width:0;padding:0;border:none;background:transparent}
 
   .hero__g{grid-template-columns:1fr;gap:1.9rem;padding:2.4rem 1.15rem 2.6rem}
   .hero p{font-size:1.05rem}
