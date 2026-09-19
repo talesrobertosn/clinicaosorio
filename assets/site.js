@@ -14,19 +14,29 @@
     });
   }
 
-  // contato flutuante no desktop
-  var flutua = document.querySelector(".flutua");
-  if (flutua) {
-    var alvo = flutua.querySelector(".flutua__btn");
-    var fecha = function () { flutua.setAttribute("data-aberto", "0"); };
+  // popups de contato (flutuante no desktop e o botão "Agendar" do cabeçalho)
+  var popup = function (raiz, botao, painel) {
+    var el = document.querySelector(raiz);
+    if (!el) { return; }
+    var alvo = el.querySelector(botao);
+    var p = el.querySelector(painel);
+    if (!alvo || !p) { return; }
+    var fecha = function () {
+      el.setAttribute("data-aberto", "0");
+      alvo.setAttribute("aria-expanded", "false");
+    };
     alvo.addEventListener("click", function (e) {
       e.stopPropagation();
-      flutua.setAttribute("data-aberto", flutua.getAttribute("data-aberto") === "1" ? "0" : "1");
+      var aberto = el.getAttribute("data-aberto") === "1";
+      el.setAttribute("data-aberto", aberto ? "0" : "1");
+      alvo.setAttribute("aria-expanded", aberto ? "false" : "true");
     });
     document.addEventListener("click", fecha);
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") fecha(); });
-    flutua.querySelector(".flutua__p").addEventListener("click", function (e) { e.stopPropagation(); });
-  }
+    p.addEventListener("click", function (e) { e.stopPropagation(); });
+  };
+  popup(".flutua", ".flutua__btn", ".flutua__p");
+  popup(".topo-cta", ".topo-cta__btn", ".topo-cta__p");
 
   // copiar endereço
   Array.prototype.forEach.call(document.querySelectorAll("[data-copiar]"), function (b) {
