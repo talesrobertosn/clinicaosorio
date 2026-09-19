@@ -115,7 +115,7 @@ strong{font-weight:700;color:var(--tinta)}
 .faixa__g{max-width:var(--larg);margin:0 auto;padding:2.1rem 1.6rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
 .faixa b{display:block;color:#fff;font-family:Fraunces,Georgia,serif;font-size:1.6rem;font-weight:500;line-height:1.1;margin-bottom:.15rem}
 .faixa span{font-size:.92rem;line-height:1.4;display:block}
-.faixa__ic{display:flex;flex-shrink:0;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(47,180,207,.16);border:1px solid rgba(47,180,207,.3);margin-bottom:1rem}
+.faixa__g .faixa__ic{display:flex;flex-shrink:0;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(47,180,207,.16);border:1px solid rgba(47,180,207,.3);margin-bottom:1rem}
 .faixa__ic svg{display:block;width:21px;height:21px;fill:var(--agua)}
 
 /* ---------------- cartões ---------------- */
